@@ -9,6 +9,9 @@ instructions:
 ```javac *.java```
 
 run programs with java
+
 ``java Q1``
+
 ``java Q2`` 
+
 ``java Q3`` 
