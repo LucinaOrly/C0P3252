@@ -27,7 +27,7 @@ public class Q1 {
 		System.out.printf("Sum: %d+%d+%d= %d%n",a,b,c,sum);
 		System.out.printf("Average: %d%n", ave);
 		System.out.printf("Product: %d*%d*%d= %d%n",a,b,c,prod);
-		System.out.printf("Min: %d%n", max);
+		System.out.printf("Max: %d%n", max);
 		System.out.printf("Min: %d%n", min);
 	}
 }
