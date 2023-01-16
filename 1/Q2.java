@@ -12,7 +12,7 @@ public class Q2 {
 
 		System.out.print("Enter 5 integers: ");
 		for(int i=0;i<5;i++) { 
-			list[i] = input.nextInteger();
+			list[i] = input.nextInt();
 			min = Math.min(min, list[i]);
 			max = Math.max(max, list[i]);
 		}
