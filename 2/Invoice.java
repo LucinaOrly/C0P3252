@@ -22,6 +22,7 @@ public class Invoice {
     private int quan;
     private double price; // per part 
 
+    // constructors
     public Invoice(String partNum, String desc, int quan, double price) {
         setPartNum(partNum);
         setDesc(desc);
@@ -32,15 +33,22 @@ public class Invoice {
     {
         this(DEFAULT_NUM,DEFAULT_DESC,0,0.0);
     }
+
+    // public methods
+    public double getInvoiceAmount() {
+        return quan * price;
+    }
+
+    
     // getters
     public String getPartNum() {return partNum;}
     public String getDesc() {return desc;}
     public int getQuan() {return quan;}
-    public double getPrice() {return price}
+    public double getPrice() {return price;}
     // setters 
     public void setPartNum(String partNum) {this.partNum = partNum;}
     public void setDesc(String desc) {this.desc = desc;}
-    public void setQuan(int quan) {this.quan = quan;}
-    public void setPrice(double price) {this.price = price;}
+    public void setQuan(int quan) {this.quan = quan > 0 ? quan : 0;}
+    public void setPrice(double price) {this.price = price > 0.0 ? price : 0.0;}
 
 }
