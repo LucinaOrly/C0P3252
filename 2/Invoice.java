@@ -48,7 +48,7 @@ public class Invoice {
     // setters 
     public void setPartNum(String partNum) {this.partNum = partNum;}
     public void setDesc(String desc) {this.desc = desc;}
-    public void setQuantity(int quan) {this.quan = quan >= 0 ? quan : this.quan;}
-    public void setPrice(double price) {this.price = price >= 0.0 ? price : this.price;}
+    public void setQuantity(int quan) {this.quan = (quan >= 0 ? quan : this.quan);}
+    public void setPrice(double price) {this.price = (price >= 0.0 ? price : this.price);}
 
 }

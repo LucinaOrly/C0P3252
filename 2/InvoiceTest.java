@@ -11,7 +11,7 @@ public class InvoiceTest {
 
             Invoice[] arr = {inv1, inv2, inv3}; 
 
-            System.out.printf("%-13s%-10s%-13s%-10s%-10s%n=========================================%n",
+            System.out.printf("%-13s%-10s%-13s%-10s%-10s%n========================================================================%n",
                 "Total",
                 "Quantity",
                 "PricePer",
@@ -31,6 +31,7 @@ public class InvoiceTest {
             inv1.setDesc("Piano");
             inv1.setQuantity(3);
             inv1.setPartNum("00000044");
+		inv1.setPrice(5504.00);
             printInv(inv1);
     }
 
