@@ -26,7 +26,7 @@ public class Invoice {
     public Invoice(String partNum, String desc, int quan, double price) {
         setPartNum(partNum);
         setDesc(desc);
-        setQuan(quan);
+        setQuantity(quan);
         setPrice(price);
     }
     public Invoice()
@@ -43,12 +43,12 @@ public class Invoice {
     // getters
     public String getPartNum() {return partNum;}
     public String getDesc() {return desc;}
-    public int getQuan() {return quan;}
+    public int getQuantity() {return quan;}
     public double getPrice() {return price;}
     // setters 
     public void setPartNum(String partNum) {this.partNum = partNum;}
     public void setDesc(String desc) {this.desc = desc;}
-    public void setQuan(int quan) {this.quan = quan > 0 ? quan : 0;}
-    public void setPrice(double price) {this.price = price > 0.0 ? price : 0.0;}
+    public void setQuantity(int quan) {this.quan = quan >= 0 ? quan : this.quan;}
+    public void setPrice(double price) {this.price = price >= 0.0 ? price : this.price;}
 
 }

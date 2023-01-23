@@ -11,11 +11,11 @@ public class InvoiceTest {
 
             Invoice[] arr = {inv1, inv2, inv3}; 
 
-            System.out.printf("%s13%s10%s13%s10%s10%n=========================================%n",
+            System.out.printf("%-13s%-10s%-13s%-10s%-10s%n=========================================%n",
                 "Total",
                 "Quantity",
-                "Price Per",
-                "Item Number",
+                "PricePer",
+                "ItemNum",
                 "Description");
             for(Invoice item : arr) {
                 printInv(item);
@@ -25,22 +25,22 @@ public class InvoiceTest {
             inv1.setPrice(-10.0);
             inv1.setQuantity(1);
             inv1.setDesc("I put a negative price on this invoice");
-            inv1.setItemNumber(00000043);
+            inv1.setPartNum("00000043");
             printInv(inv1);
 
             inv1.setDesc("Piano");
             inv1.setQuantity(3);
-            inv1.setItemNumber(00000044);
+            inv1.setPartNum("00000044");
             printInv(inv1);
     }
 
     public static void printInv(Invoice inv) {
-        System.out.printf("%f10.2%d10%f10.2%s10%-s10%n", 
-            inv.getInvoiceAmmount(),
+        System.out.printf("%10.2f %10d %10.2f %10s %-10s%n", 
+            inv.getInvoiceAmount(),
             inv.getQuantity(), 
             inv.getPrice(),
-            inv.getItemNum(),
+            inv.getPartNum(),
             inv.getDesc()
-            )
+            );
     }
 }
