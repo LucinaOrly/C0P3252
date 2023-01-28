@@ -6,12 +6,13 @@
 // arguments and returns a value from a Coin enum (HEADS and TAILS)
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 import java.security.SecureRandom;
 
 public class CoinToss {
 
-	// final variables
 	static final SecureRandom ran = new SecureRandom();
+	static final Scanner in = new Scanner(System.in);
 	static enum Coin {TAILS,HEADS};
 
 	// static variables
@@ -20,12 +21,13 @@ public class CoinToss {
 	// main method
 	public static void main(String[] args) {
 		boolean exit = false;
-		while (!exit)		
 		
+		while(!exit)
 		switch(printMenu()) {
 
 		case 1: // Flip a coin
 			String result = "";
+
 			switch (flip())	{
 
 			case TAILS: 
@@ -39,7 +41,9 @@ public class CoinToss {
 			}
 
 			System.out.printf("Coin flip resulted in %s!", result);
+			printResults();
 			break;	
+
 		case 2: // exit
 			exit = true;	
 			break;
@@ -53,13 +57,19 @@ public class CoinToss {
 
 	// helper methods
 	public static int printMenu() {
-		printResults();
 		System.out.print("\nMenu\n========================\n1. Flip a Coin\n2. Exit\nMake a selection: ");	
-
-		return (new Scanner(System.in)).nextInt();
+		int result = 0;
+		try {
+			result = in.nextInt();		
+		} 
+		catch(InputMismatchException e) {
+			System.out.println("Invalid input(" + e + ")");
+			in.nextLine();
+		}
+		return result; 
 	}
 	public static void printResults() {
-		System.out.printf("Heads: %d%nTails: %d%n", 
+		System.out.printf("%nHeads: %d%nTails: %d%n", 
 			headCount,
 		 	tailCount);
 	}
