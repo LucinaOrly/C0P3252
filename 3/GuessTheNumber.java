@@ -24,6 +24,7 @@ public class GuessTheNumber {
 		SecureRandom ran = new SecureRandom();
 		Scanner in = new Scanner(System.in);	
 
+		// game logic loop
 		do {
 			System.out.println("Choosing a new number...");
 			// choose a random number between [MIN_INT, MAX_INT]
@@ -31,12 +32,37 @@ public class GuessTheNumber {
 			System.out.println("New number chosen!");
 			
 			int userGuess = MIN_INT - 1;
+			// gameplay loop
 			while (userGuess != winCondition) {
+			
+				// get input
 				System.out.printf("Enter a guess between [%d,%d]: ", MIN_INT, MAX_INT);
+				try {
+					userGuess = in.nextInt();
+				} 
+				catch(InputMismatchException e) {
+					System.out.printf("Invalid input (%s)%n", e);
+				}
 				
+				// compare user's guess with chosen number
+				String res = "Congratualations. You guessed the number!";
+				if (userGuess < winCondition)
+					res = "Too Low. Try again.";
+				else if (userGuess > winCondition)
+					res = "Too High. Try again.";
+				
+				System.out.println(res);
 			}	
-		}
-		while(!exit)		
+			// prompt to play again
+			System.out.println("Play again ? (y/n)");
+			switch(in.nextChar())
+			case 'y':
+				break;
+			case 'n':
+			case default:				
+				System.out.println("Resetting the game...");	
+		} while(!exit);
+		
 	}
 
 }
