@@ -15,7 +15,7 @@ import java.util.Scanner;
 import java.security.SecureRandom;
 
 public class GuessTheNumber {
-	final int 
+	static final int 
 		MAX_INT = 1000,
 		MIN_INT = 1;
 		
@@ -55,12 +55,16 @@ public class GuessTheNumber {
 			}	
 			// prompt to play again
 			System.out.println("Play again ? (y/n)");
-			switch(in.nextChar())
+			switch(in.next().charAt(0)) {
 			case 'y':
+				System.out.println("Resetting the game...");	
+				in.nextLine();
+
 				break;
 			case 'n':
-			case default:				
-				System.out.println("Resetting the game...");	
+			default:				
+				exit = true;
+			}
 		} while(!exit);
 		
 	}
