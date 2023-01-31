@@ -5,7 +5,7 @@ jdk-9.0.4 (tested with jdk-17.0.2)
 
 #how to run:
 run with command `java`
->java Round.java
+>java Round.java [double args]
 >java CoinFlip.java
 >java GuessTheNumber.java
 
@@ -13,7 +13,7 @@ run with command `java`
 run command `make`
 >make
 then run programs with `java`
->java Round
+>java Round [double args]
 >java CoinFlip
 >java GuessTheNumber
 ##how to clean
@@ -21,10 +21,10 @@ run the following command to clean up compilation
 >make clean
 #how to compile and run with java compier `javac`
 run command `javac`
->javac Round.java
+javac Round.java
 >javac CoinFlip.java
 >javac GuessTheNumber.java
 then run programs with `java`
->java Round
+>java Round [double args]
 >java CoinFlip
 >java GuessTheNumber

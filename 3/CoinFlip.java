@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.security.SecureRandom;
 
-public class CoinToss {
+public class CoinFlip {
 
 	static final SecureRandom ran = new SecureRandom();
 	static final Scanner in = new Scanner(System.in);
