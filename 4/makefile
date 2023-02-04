@@ -1,15 +1,15 @@
 C="javac"
 
-all: SalesCommisions VariableLength GuessTheNumber
+all: SalesCommissions VariableLength InitArray
 
-SalesCommisions: SalesCommisions.java
-	$(C) SalesCommisions.java		
+SalesCommissions: SalesCommissions.java
+	$(C) SalesCommissions.java		
 
 VariableLength: VariableLength.java
 	$(C) VariableLength.java
 
-GuessTheNumber: GuessTheNumber.java
-	$(C) GuessTheNumber.java
+InitArray: InitArray.java
+	$(C) InitArray.java
 
 clean:
 	rm *.class
