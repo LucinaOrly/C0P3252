@@ -2,7 +2,6 @@
 // (Using the Enhanced for statement) Write an application that uses an
 // enhanced for statement tosum the double values passed by the command-line
 // arguments 
-// Honestly I am just going to copy part of one of my programs from the first assignment
 
 public class SumOf {
 	

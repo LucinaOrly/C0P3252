@@ -1,10 +1,11 @@
 // 2-D array
 // Create a two-dimensional array with six rows and four columns where the
 // cells in the first five rows and three columns are filled with random
-// integers between 0 and 9, the first 5 cells of the fourth column contain the
-// sums of the integers in the cells of the corresponding rows, the first three
-// cells of the sixth row contain the sums of the integers in the corresponding
-// column, and the lower right cell, position (6,4), is set to 0.
+// integers between 0 and 9, the first 5 cells of the fourth column contain
+// the sums of the integers in the cells of the corresponding rows, the first
+// three cells of the sixth row contain the sums of the integers in the
+// corresponding column, and the lower right cell, position (6,4), is set to
+// 0.
 import java.security.SecureRandom;
 
 public class Array2D {
