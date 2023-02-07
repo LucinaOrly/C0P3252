@@ -8,6 +8,8 @@ run with command `java`
 >java SalesCommisions.java [double args]
 >java VariableLength.java
 >java GuessTheNumber.java
+>java Array2D.java
+>java SumOf.java
 
 #how to compile and run with makefile
 run command `make`
@@ -16,15 +18,26 @@ then run programs with `java`
 >java SalesCommisions [double args]
 >java VariableLength
 >java GuessTheNumber
+>java Array2D
+>java SumOf
+
 ##how to clean
 run the following command to clean up compilation
 >make clean
+
 #how to compile and run with java compier `javac`
 run command `javac`
 javac SalesCommisions.java
 >javac VariableLength.java
 >javac GuessTheNumber.java
+>javac Array2D.java
+>javac SumOf.java
+
 then run programs with `java`
 >java SalesCommisions [double args]
 >java VariableLength
 >java GuessTheNumber
+>java Array2D
+>java SumOf
+
+

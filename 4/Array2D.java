@@ -11,8 +11,8 @@ import java.security.SecureRandom;
 public class Array2D {
 	static final int MIN_RANGE = 0;
 	static final int MAX_RANGE = 9;
-	static final int NUM_ROWS = 6;
-	static final int NUM_COLS = 4;
+	static final int NUM_ROWS = 6; //default 6
+	static final int NUM_COLS = 4; //default 4
 
 	public static void main(String[] args) {
 		int[][] arr = new int[NUM_ROWS][NUM_COLS];
@@ -27,14 +27,14 @@ public class Array2D {
 		// calculate sum of COLS
 		for (int i = 0; i < NUM_ROWS - 1; i++) {
 			int sum = 0;
-			for (int j = 0; j < NUM_COLS - 2; j++)	
+			for (int j = 0; j < NUM_COLS - 1; j++)	
 				sum += arr[i][j];	
 			arr[i][NUM_COLS-1] = sum;
 		}
-		// calculate sum
+		// calculate sum of ROWS
 		for (int i = 0; i < NUM_COLS - 1; i++) {
 			int sum = 0;
-			for (int j = 0; j < NUM_ROWS - 2; j++)	
+			for (int j = 0; j < NUM_ROWS - 1; j++)	
 				sum += arr[j][i];	
 			arr[NUM_ROWS-1][i] = sum;
 		}
