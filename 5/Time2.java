@@ -9,7 +9,6 @@ public class Time2 {
 		this(0,0,0);
 	}
 
-<<<<<<< HEAD
 	// Time2 consntructor
 	public Time2(int hour) {
 		this(hour,0,0);
@@ -19,11 +18,6 @@ public class Time2 {
 	}
 	public Time2(int hour, int minute, int second) {
 		setTime(hour, minute, second);
-=======
-	// Time2 consntructor, second supplied
-	public Time2(int second) {
-		setSecondSinceMidnight(second);
->>>>>>> 897ea0921cbb3e46ea3a7496eb3086d6b8a4ddf5
 	}
 
 	// Time2 constructor, copy constructor
