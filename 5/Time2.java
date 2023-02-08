@@ -1,7 +1,8 @@
 // Fig. 8.5: Time2java
 
 public class Time2 {
-	private int second; // seconds after midnight
+	static final int MAX_SECOND = 86399;
+	private int second; // seconds since  midnight
 	
 	// Time2 no-arg constructor
 	public Time2(){
@@ -10,7 +11,7 @@ public class Time2 {
 
 	// Time2 consntructor, second supplied
 	public Time2(int second) {
-		setSecond(second);
+		setSecondSinceMidnight(second);
 	}
 
 	// Time2 constructor, copy constructor
@@ -19,6 +20,9 @@ public class Time2 {
 	}
 
 	// setters
+	public void setTime(Time2 time) {
+		this.second = time.second;
+	}
 	public void setTime(int hour, int minute, int second) {
 		setSecond(second);
 		setMinute(minute);
@@ -40,7 +44,10 @@ public class Time2 {
 		this.second += second - (second % 60);
 	}
 	public void setSecondSinceMidnight(int second) {
-		while (second
+		while (second < 0)
+			second =+ MAX_SECOND;
+		this.second = second % (MAX_SECOND + 1);
+
 	}
 
 	// getters
