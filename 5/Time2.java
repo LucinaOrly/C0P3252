@@ -20,7 +20,9 @@ public class Time2 {
 
 	// setters
 	public void setTime(int hour, int minute, int second) {
-			
+		setSecond(second);
+		setMinute(minute);
+		setHour(hour);
 	}
 	public void setHour(int hour) {
 		if(hour < 0 || hour >= 24)
@@ -30,13 +32,15 @@ public class Time2 {
 	public void setMinute(int minute) {
 		if(minute < 0 || minute >= 24)
 			throw IllegalArgumentException("minute must be between 0-59");
-		this.second = 
+		this.second += mtos(minute) - mtos(getMinute());
 	}
-	public void setSecond() {
-		if(hour < 0 || hour >= 24)
-			throw IllegalArgumentException("hour must be between 0-23");
-		this.second %= 3600 + htos(hour);
-	
+	public void setSecond(int second) {
+		if(second < 0 || second >= 60)
+			throw IllegalArgumentException("second must be between 0-59");
+		this.second += second - (second % 60);
+	}
+	public void setSecondSinceMidnight(int second) {
+		while (second
 	}
 
 	// getters
