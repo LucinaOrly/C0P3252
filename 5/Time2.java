@@ -5,17 +5,23 @@ public class Time2 {
 	
 	// Time2 no-arg constructor
 	public Time2(){
-		this(0);
+		this(0,0,0);
 	}
 
-	// Time2 consntructor, second supplied
-	public Time2(int second) {
-		setSecond(second);
+	// Time2 consntructor
+	public Time2(int hour) {
+		this(hour,0,0);
+	}
+	public Time2(int hour, int minute) {
+		this(hour,minute,0);
+	}
+	public Time2(int hour, int minute, int second) {
+		setTime(hour, minute, second);
 	}
 
 	// Time2 constructor, copy constructor
 	public Time2(Time2 time) {
-		setTime(time.second);
+		setSecondSinceMidnight(time.second);
 	}
 
 	// setters
