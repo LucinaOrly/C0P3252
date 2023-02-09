@@ -36,18 +36,18 @@ public class Time2 {
 	}
 	public void setHour(int hour) {
 		if(hour < 0 || hour >= 24)
-			throw IllegalArgumentException("hour must be between 0-23");
-		this.second %= 3600 + htos(hour);
+			throw new IllegalArgumentException("hour must be between 0-23");
+		this.second = second % 3600 + htos(hour);
 	}
 	public void setMinute(int minute) {
-		if(minute < 0 || minute >= 24)
-			throw IllegalArgumentException("minute must be between 0-59");
+		if(minute < 0 || minute >= 60)
+			throw new IllegalArgumentException("minute must be between 0-59");
 		this.second += mtos(minute) - mtos(getMinute());
 	}
 	public void setSecond(int second) {
 		if(second < 0 || second >= 60)
-			throw IllegalArgumentException("second must be between 0-59");
-		this.second += second - (second % 60);
+			throw new IllegalArgumentException("second must be between 0-59");
+		this.second += second - (this.second % 60);
 	}
 	public void setSecondSinceMidnight(int second) {
 		while (second < 0)
@@ -61,7 +61,7 @@ public class Time2 {
 		return second / 3600;
 	}
 	public int getMinute() { 
-		return second / 60;
+		return second % 3600 / 60;
 	}
 	public int getSecond() {
 		return second % 60;
@@ -72,24 +72,32 @@ public class Time2 {
 
 	// convert to String in universal-time format
 	public String toUniversalString() {
-		return String.format("%02d:%02d:$02d",
+		return String.format("%02d:%02d:%02d",
 			getHour(),
 			getMinute(),
 			getSecond()
 		);
 	}
 
-	// convert to String in standar-time format
+	// convert to String in standard-time format
 	public String toString() {
 		// edit this later
-		return String();
+		int hour = getHour();
+		String m = hour < 12 ? "AM" : "PM" ;
+		if(hour == 0) hour = 12;
+		else if(hour > 12) hour -= 12;
+
+		hour -= hour > 12 ? 12 : 0; // convert 24hr to 12hr
+		return String.format("%d:%02d:%02d %2s",
+			hour, getMinute(), getSecond(), m
+			);
 	}
 
 	// private helper functions
-	private static mtos(int m) {
+	private static int mtos(int m) {
 		return m * 60;
 	}
-	private static htos(int h) {
+	private static int htos(int h) {
 		return h * 3600;
 	}
 }
