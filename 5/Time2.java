@@ -93,6 +93,22 @@ public class Time2 {
 			);
 	}
 
+	// 8.7: increment
+	public void tick() {
+		tick(1);
+	}
+	public void tick(int inc) {
+		if(second + inc > MAX_SECOND)
+			inc -= MAX_SECOND + 1;
+		second += inc;
+	}
+	public void incrementMinute() {
+		tick(60);
+	}
+	public void incrementHour() {
+		tick(3600);
+	}
+
 	// private helper functions
 	private static int mtos(int m) {
 		return m * 60;
