@@ -6,7 +6,7 @@ public class Date {
 
 	private static final int[] daysPerMonth = {
 	0,31,28,31,30,31,30,31,31,30,31,30,31
-	}
+	};
 	
 	// constructors
 	public Date() {
@@ -18,6 +18,32 @@ public class Date {
 		setDay(day);
 	}
 
+	// increment
+//	public void nextDay() { 
+//		nextDay(1);
+//	}
+	public void nextDay() {
+		if (day + 1 > daysPerMonth[month]) {
+			switch (month) {
+			case 12:
+				day = 1;	
+				month = 1;
+				year++;
+			break;
+			case 2:
+				if (day == 28 && isLeapYear(year)) {
+					day++;
+					break;
+				}
+			default:
+				day = 1;
+				month++;
+			}			
+		}
+		else day++;
+			
+	}
+
 	// setters
 	public void setMonth(int month) {
 		if (month <= 0 || month > 12)
@@ -27,18 +53,27 @@ public class Date {
 	}
 	public void setDay(int day) {
 		switch(month) {
-		switch 2:
+		case 2:
 			if (day == 29 && !isLeapYear(year))
-				throw new IllegalArgumentException("day("+day+") out-of-range for the specified month (not a leap year!)");
+				throw new IllegalArgumentException("day("
+					+day
+					+") out-of-range for the specified month (not a leap year!)");
 		default:
 			if (day > daysPerMonth[month])
-				throw new IllegalArgumentException("day("+day+") out-of-range for the specified month(1-"
+				throw new IllegalArgumentException("day("
+					+day
+					+") out-of-range for the specified month(1-"
 					+ daysPerMonth[month] + ")");
 		}
 
 		this.day = day;	
 	}
+	// idk what the year should error check to, so lets assume it has to be greater-than 0
 	public void setYear(int year) {
+		if (year < 0)
+			throw new IllegalArgumentException("year("
+				+ year
+				+ ") must be greater-than 0");
 		this.year = year;
 	}
 
