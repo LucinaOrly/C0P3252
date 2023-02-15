@@ -29,7 +29,7 @@ public class DateTest {
 		
 		// test year validation > 0
 		try {
-			new Date(1,1,-1);
+			new Date(1,1,Integer.MAX_VALUE + 1);
 		}
 		catch (IllegalArgumentException e) {
 			System.out.printf("Attempted to create a date with negative year%n It worked! (%s)%n", e);

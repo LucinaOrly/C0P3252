@@ -93,20 +93,24 @@ public class Time2 {
 			);
 	}
 
-	// 8.7: increment
-	public void tick() {
-		tick(1);
+	// 8.7: increment, true if next day
+	public boolean tick() {
+		return tick(1);
 	}
-	public void tick(int inc) {
-		if(second + inc > MAX_SECOND)
+	public boolean tick(int inc) {
+		boolean nextDay = false;
+		if(second + inc > MAX_SECOND) {
 			inc -= MAX_SECOND + 1;
+			nextDay = true;
+		}
 		second += inc;
+		return nextDay;
 	}
-	public void incrementMinute() {
-		tick(60);
+	public boolean incrementMinute() {
+		return tick(60);
 	}
-	public void incrementHour() {
-		tick(3600);
+	public boolean incrementHour() {
+		return tick(3600);
 	}
 
 	// private helper functions

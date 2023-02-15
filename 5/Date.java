@@ -7,6 +7,9 @@ public class Date {
 	private static final int[] daysPerMonth = {
 	0,31,28,31,30,31,30,31,31,30,31,30,31
 	};
+	private static final String[] MONTH_NAMES = {
+	"","january","febuary","march","april","may","june","july","august","september","october","november","december"
+	};
 	
 	// constructors
 	public Date() {
@@ -16,6 +19,35 @@ public class Date {
 		setMonth(month);
 		setYear(year);
 		setDay(day);
+	}
+	public Date(String month, int day, int year) {
+		for(int i = 1; i <= 13; i++) {
+			if (month.toLowerCase() == MONTH_NAMES[i]) {
+				this.month = i;
+				break;
+			}
+			if (i >= 13)
+				throw new IllegalArgumentException("month("
+				+ month
+				+ ") is not a valid month");
+		}
+		setYear(year);
+		setDay(day);
+	}
+	public Date(int daysAfterNewYears, int year) {
+		setYear(year);
+		int maxDays = (!isLeapYear(year) ? 364 : 365);
+		if(daysAfterNewYears < 0 || daysAfterNewYears > maxDays)
+			throw new IllegalArgumentException("first argument("
+				+ daysAfterNewYears
+				+ ") must be between 0-" + maxDays);
+		for(int i = 1; i <= 12 && daysAfterNewYears < 28; i++) switch(i){
+			case 2:
+				if (isLeapYear(year) ) daysAfterNewYears -= 1;
+			default:
+				daysAfterNewYears -= daysPerMonth[i];
+			}
+		day = daysAfterNewYears;
 	}
 
 	// increment
@@ -68,9 +100,9 @@ public class Date {
 
 		this.day = day;	
 	}
-	// idk what the year should error check to, so lets assume it has to be greater-than 0
+	// edit: this error checks the argument so that it is > 0 and < Integer.MAX_VALUE + 1 (because it will be negative)
 	public void setYear(int year) {
-		if (year < 0)
+		if (year < 0) 
 			throw new IllegalArgumentException("year("
 				+ year
 				+ ") must be greater-than 0");
@@ -91,5 +123,22 @@ public class Date {
 	public static boolean isLeapYear(int year) {
 		return (year % 100 != 0 && year % 4 == 0) ||
 			year % 400 == 0;
+	}
+	// 8.15 functions
+	public String toVerboseString() {
+		String str = toString();	
+		str += String.format("%n%s %d, %d", MONTH_NAMES[month], day, year);
+		str += String.format("%n%d %d", getDaysAfterNewYears(), year);
+		return str;	
+	}
+	public int getDaysAfterNewYears() {
+		int day = 0;
+		for (int i = 1; i < month; i++) switch(i) {
+			case 2:
+				if (isLeapYear(year)) day++;
+			default:
+				day += daysPerMonth[i];
+		}
+		return day + this.day;
 	}
 }
