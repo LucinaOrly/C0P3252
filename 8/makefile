@@ -1,0 +1,2 @@
+all: DivideByZeroWithExceptionHandling.java
+	java DivideByZeroWithExceptionHandling.java
