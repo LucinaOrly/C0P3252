@@ -36,6 +36,9 @@ public class TipCalculatorController {
    @FXML
    private TextField totalTextField;
 
+   @FXML
+   private TextField numPeopleTextField, totalPerPersonTextField;
+
    // calculates and displays the tip and total amounts
    @FXML
    private void calculateButtonPressed(ActionEvent event) {
@@ -43,14 +46,25 @@ public class TipCalculatorController {
          BigDecimal amount = new BigDecimal(amountTextField.getText());
          BigDecimal tip = amount.multiply(tipPercentage);
          BigDecimal total = amount.add(tip);
+	
+	 // update
+	 BigDecimal numPeople = new BigDecimal(numPeopleTextField.getText());
+	 BigDecimal perPerson = total.divide(numPeople, 2, RoundingMode.HALF_UP);
 
          tipTextField.setText(currency.format(tip));
          totalTextField.setText(currency.format(total));
+	 totalPerPersonTextField.setText(currency.format(perPerson)); // update
       }
       catch (NumberFormatException ex) {
          amountTextField.setText("Enter amount");
+	 numPeopleTextField.setText("Enter int");
          amountTextField.selectAll();
          amountTextField.requestFocus();
+      }
+      catch (ArithmeticException e) { // divide by 0
+      	 numPeopleTextField.setText("1");
+      	 numPeopleTextField.selectAll();
+      	 numPeopleTextField.requestFocus();
       }
    }
 
@@ -74,17 +88,3 @@ public class TipCalculatorController {
    }
 }
 
-/**************************************************************************
- * (C) Copyright 1992-2018 by Deitel & Associates, Inc. and               *
- * Pearson Education, Inc. All Rights Reserved.                           *
- *                                                                        *
- * DISCLAIMER: The authors and publisher of this book have used their     *
- * best efforts in preparing the book. These efforts include the          *
- * development, research, and testing of the theories and programs        *
- * to determine their effectiveness. The authors and publisher make       *
- * no warranty of any kind, expressed or implied, with regard to these    *
- * programs or to the documentation contained in these books. The authors *
- * and publisher shall not be liable in any event for incidental or       *
- * consequential damages in connection with, or arising out of, the       *
- * furnishing, performance, or use of these programs.                     *
- *************************************************************************/
