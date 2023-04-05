@@ -40,32 +40,29 @@ public class TipCalculatorController {
    private TextField numPeopleTextField, totalPerPersonTextField;
 
    // calculates and displays the tip and total amounts
-   @FXML
    // modified arguments to void to comply with Assignment 13.6
+   @FXML
    private void calculateButtonPressed() {
       try {
          BigDecimal amount = new BigDecimal(amountTextField.getText());
          BigDecimal tip = amount.multiply(tipPercentage);
          BigDecimal total = amount.add(tip);
 	
+         tipTextField.setText(currency.format(tip));
+         totalTextField.setText(currency.format(total));
+
 	 // update
 	 BigDecimal numPeople = new BigDecimal(numPeopleTextField.getText());
 	 BigDecimal perPerson = total.divide(numPeople, 2, RoundingMode.HALF_UP);
-
-         tipTextField.setText(currency.format(tip));
-         totalTextField.setText(currency.format(total));
 	 totalPerPersonTextField.setText(currency.format(perPerson)); // update
       }
       catch (NumberFormatException ex) {
-         amountTextField.setText("Enter amount");
-	 numPeopleTextField.setText("Enter int");
-         amountTextField.selectAll();
-         amountTextField.requestFocus();
+	 totalTextField.setText("");
+	 totalPerPersonTextField.setText("");
       }
       catch (ArithmeticException e) { // divide by 0
-      	 numPeopleTextField.setText("1");
+	 totalPerPersonTextField.setText("undefined");
       	 numPeopleTextField.selectAll();
-      	 numPeopleTextField.requestFocus();
       }
    }
 
@@ -83,6 +80,7 @@ public class TipCalculatorController {
                tipPercentage = 
                   BigDecimal.valueOf(newValue.intValue() / 100.0);
                tipPercentageLabel.setText(percent.format(tipPercentage));
+	       calculateButtonPressed();
             }
          }
       );
@@ -92,6 +90,15 @@ public class TipCalculatorController {
 			new ChangeListener<String>() {
 				@Override
 				public void changed(ObservableValue<? extends String> ov, 
+				String oldVal, String newVal ) {
+					calculateButtonPressed();
+				}
+			}
+		);
+		numPeopleTextField.textProperty().addListener(
+			new ChangeListener<String>() {
+				@Override
+				public void changed(ObservableValue<? extends String> ov,
 				String oldVal, String newVal ) {
 					calculateButtonPressed();
 				}
