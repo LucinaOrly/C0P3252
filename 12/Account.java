@@ -46,5 +46,12 @@ public class Account {
    public void setBalance(double balance) {this.balance = balance;} 
 
    // combine method that combines TransactionRecord.ammount with this.balance
-   public void combine(TransactionRecord tr) { balance += tr.ammount; }
+   public void combine(TransactionRecord tr) { balance += tr.getAmount(); }
+
+   @Override
+   public String toString() {
+		return String.format("%s %s %s %s",
+			this.accountNumber, this.firstName, this.lastName, this.balance);
+
+	}
 } 
