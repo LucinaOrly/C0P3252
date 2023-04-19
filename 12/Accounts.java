@@ -1,7 +1,7 @@
 // Fig. 15.10: Accounts.java
 // Maintains a List<Account>
-import jav.util.ArrayList;
-import jav.util.List;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 
 public class Accounts {

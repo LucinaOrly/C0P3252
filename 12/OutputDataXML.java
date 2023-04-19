@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.xml.bind.JAXB;
 
-public class OutputData {
+public class OutputDataXML {
 	
 	public static void main(String[] args) {
 		TransactionRecord[] trArr = {
@@ -40,8 +40,8 @@ public class OutputData {
 			Files.newBufferedWriter(Paths.get("trans.xml"))) {
 			// stores the TransactionRecords before XML serialization;
 			TransactionRecords trs = new TransactionRecords();
-			for (Account acc : accArr)
-				trs.getTransactionRecords().add(acc);
+			for (TransactionRecord tr : trArr)
+				trs.getTransactionRecords().add(tr);
 
 			// write TransactionRecordsList's XML to output
 			JAXB.marshal(trs, out);
