@@ -11,7 +11,7 @@ run command `make test`
 
 > make test
 
-*note, will use 16.13.txt as input for `WordTypeCount` and `LinkedListTest`*
+*note, will use 16.11.txt as input for `WordTypeCount` and `LinkedListTest`*
 
 # how to compile with make and run with java
 run command `make`
