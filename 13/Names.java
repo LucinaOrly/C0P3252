@@ -6,9 +6,10 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 
 public class Names {
-	public static final String FILE_NAME = "names.txt";
+	public static final String FILE_NAME = "first-names.txt";
 
 	public static void main(String[] args) {
+
 		// import names from file with duplicated names
 		HashSet<String> names = importNames(FILE_NAME);
 
@@ -32,8 +33,8 @@ public class Names {
 	public static HashSet<String> importNames(String fileName) {
 		HashSet<String> set = new HashSet<String>();
 		try (Scanner in = new Scanner(Paths.get(fileName))) {
-			while(in.hasNext()) {
-				String tok = in.next().toLowerCase();
+			while(in.hasNextLine()) {
+				String tok = in.nextLine().toLowerCase();
 				if(!set.add(tok))
 					System.out.printf("Rejected %s(Already Exists!)%n",tok);
 			}

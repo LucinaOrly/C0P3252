@@ -1,0 +1,2 @@
+(Counting Leters) Modify the program of Fig. 16.17 to count the numebr of occurences of each letter rather than of each word. For example, the string "HELLO THERE" contains two Hs, three Es, two Ls, one O, one T, and one R. Display the Results. duplicate letters include letter, contains, and program!
+
